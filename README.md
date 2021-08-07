@@ -1,2 +1,2 @@
 # health-equity-lmdc
-Data products for Louisville Center for Health Equity - Louisville Department of Corrections data
+Data products for Louisville Center for Health Equity - Louisville Metro Department of Corrections data
