@@ -41,7 +41,7 @@ lmdc_ididit <- lmdc_15_mis %>%
       spread(month, n)
 
 
-gt(lmdc_ididit) %>% 
+gt(lmdc_ididit %>% group_by(groupname)) %>% 
       summary_rows(
             fns = list(Total = ~sum(., na.rm = TRUE)),
             formatter = fmt_number,
