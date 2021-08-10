@@ -1,0 +1,109 @@
+---
+title: "Is Race Associated with Drug and Traffic Charges?"
+author: "Eric Book"
+date: 2019-05-15
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(dplyr)
+library(kableExtra) # Cramer's V html table
+library(flextable)
+library(readr)
+library(vcd) # Odds Ratios
+library(swatches) # reads color palette file
+library(extrafont) # loads roboto
+
+# processing script: R/drugs-traffic-assoc.R
+race_comp_df <- read_rds(here::here("results/drugs-traffic-assoc/drugs-traffic-assoc-by-race.rds")) # Cramer's V
+ll_tab <- read_rds(here::here("results/drugs-traffic-assoc/log-linear-xtab.rds")) # Odds Ratios
+intrique <- read_palette(here::here("palettes/Intrigue.ase"), use_names = FALSE) # Odds Ratios
+ll_tab2 <- read_rds(here::here("results/drugs-traffic-assoc/log-linear-xtab2.rds")) # Odds Ratios
+
+```
+
+### Cramer's V
+
+The top 20 Cramer's V values measuring the association between traffic charges and drug charges have been tablulated. The Cramer's V has values between 0 and 1 where 0 corresponds to no association and 1 with complete association. 
+
+The strongest associations between drug and traffic charge pairs have very few occurences compared the size of the dataset that was evaluated (24,431 observations). Even with low counts, these associations are still able to be measured due to instances of one charge often appearing in the presence of the other and by adjusting for the size of the dataset. The charge pair with the largest frequency is last on the list with Cramer statistic of 0.13.
+
+A curious term, "enhancement," appears in several charges. There is also a charge "SPEEDING 1MPH OVER" which may be a typo.
+
+Ratios of Black inmates to White inmates are highest when traffic violations are paired with possession of marijuana. Ratios of White inmates to Black inmates are highest when open alcohol container violations are paired with drug paraphernalia violations.
+
+Overall, there are measurable associations between traffic and drug charges, but the strength of the association is weak between individual charge category pairs.  
+
+
+```{r, fig.height=10}
+
+race_comp_df1 <- race_comp_df %>%
+  filter(!Race %in% c("Other", "UNKNOWN"))
+
+myft <- flextable(race_comp_df1,
+                  col_keys = c("Drug Charge","Traffic Charge","Cramer's V", "Race",	"N", "Proportion"))
+myft <- merge_v(myft, j = ~`Drug Charge`+`Traffic Charge`+`Cramer's V`)
+myft <- theme_vanilla(myft)
+autofit(myft)
+```
+
+
+### Odds Ratios
+
+By looking at conditional odds ratios, we can ask a few different questions. If we know an inmate has a traffic charge, does being black instead of white increase the odds of also having a drug charge? Alternatively, if we know an inmate has a drug charge, does being black instead of white increase the odds of also having a traffic charge? 
+
+It may not be immediately clear how these questions differ. In the former, we're drawing from a pool of black and white inmates with drug charges, and the latter, our odds are calculated from a pool of black and white inmates with traffic charges. The different sizes of these pools are what leads to differing odds ratios.  
+
+```{r xtab, fig.align='left',message=FALSE,warning=FALSE}
+knitr::asis_output(memisc::format_html(ftable(ll_tab), margin = 'left'))
+```
+
+
+From the plot below, we can see the frequencies are very similar across the board. So, we're not likely to see large effect sizes.  
+
+```{r tree,fig.align='center',fig.height=5,message=FALSE,warning=FALSE}
+
+fill_colors <- t(matrix(c(rep(intrique[4], 4), rep(intrique[1], 4)), nrow=4))
+
+vcd::strucplot(ll_tab, gp = grid::gpar(fill = fill_colors, fontfamily = "roboto"))
+```
+
+
+The odds ratio on the left says that given an inmate does *not* have traffic charge, a black inmate is on average 0.84 times *less* likely than a white inmate to have a drug charge
+
+The odds ratio on the right says that given an inmate has a traffic charge, a black inmate is on average 1.02 times *more* likely than a white inmate to have a drug charge. Also, notice that this odds ratio's confidence interval includes 1 which means we can't say with certainty whether this effect actually exists.  
+
+
+```{r orplot,fig.align='center',fig.height=5}
+
+# Says, given that the inmate has a traffic charge, a black inmate is on average 1.0239294 more likely than a white inmate to have a drug charge.
+dtr_or <- vcd::oddsratio(ll_tab, log = FALSE)
+
+
+plot(dtr_or, ylim = c(0.6, 1.5), main = "Black inmates : White inmates, odds ratios of a drug charge given traffic charge", gp_bars = gpar(fill = intrique[5], alpha = 0.45, fontfamily = "roboto"))
+```
+
+
+The odds ratio on the left says that given an inmate does *not* have drug charge, a black inmate is on average 1.09 times *more* likely than a white inmate to have a traffic charge.  
+
+The odds ratio on the right says that given an inmate has a drug charge, a black inmate is on average 1.33 times *more* likely than a white inmate to have a traffic charge.  
+
+
+```{r orplot2, fig.align='center',fig.height=5,message=FALSE,warning=FALSE}
+
+tdr_or <- vcd::oddsratio(ll_tab2, log = FALSE)
+
+plot(tdr_or, ylim = c(0.6, 1.5), main = "Black inmates : White inmates, odds ratios of a traffic charge given drug charge", gp_bars = gpar(fill = intrique[5], alpha = 0.45, fontfamily = "roboto"))
+
+```
+
+
+
+
+
+
+
+
+

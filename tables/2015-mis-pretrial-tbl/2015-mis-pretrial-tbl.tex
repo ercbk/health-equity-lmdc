@@ -1,0 +1,181 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfauthor={Eric Book},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{Eric Book}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+
+\begin{document}
+
+\begin{verbatim}
+## -- Attaching packages ----------------------------------------------------------------------------- tidyverse 1.2.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.1.1       v purrr   0.3.2  
+## v tibble  2.1.1       v dplyr   0.8.0.1
+## v tidyr   0.8.3       v stringr 1.4.0  
+## v readr   1.3.1       v forcats 0.4.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts -------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'lubridate'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     date
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: attributes are not identical across measure variables;
+## they will be dropped
+\end{verbatim}
+
+\captionsetup[table]{labelformat=empty,skip=1pt}
+\begin{longtable}{lrrrrrrrrrrrr}
+\caption*{
+\large Characteristics of pre-trial inmates with misdemeanor charges\\ 
+\small 2015\\ 
+} \\ 
+\toprule
+ & January & February & March & April & May & June & July & August & September & October & November & December \\ 
+\midrule
+\multicolumn{1}{l}{age_group} \\ 
+\midrule
+[ 10, 20) & 120 & 56 & 66 & 74 & 83 & 68 & 63 & 74 & 54 & 64 & 61 & 71 \\ 
+[ 20, 30) & 936 & 483 & 641 & 642 & 690 & 535 & 627 & 621 & 524 & 601 & 556 & 578 \\ 
+[ 30, 40) & 735 & 367 & 462 & 459 & 500 & 464 & 499 & 513 & 450 & 512 & 500 & 543 \\ 
+[ 40, 50) & 376 & 211 & 233 & 248 & 255 & 243 & 265 & 248 & 196 & 244 & 258 & 265 \\ 
+[ 50, 60) & 195 & 90 & 118 & 121 & 148 & 104 & 117 & 151 & 119 & 121 & 129 & 130 \\ 
+[ 60, 70) & 45 & 23 & 28 & 22 & 31 & 32 & 32 & 34 & 29 & 22 & 29 & 31 \\ 
+[ 70, 80) & 4 & 3 & NA & 1 & 3 & 1 & 5 & 3 & 4 & 4 & 5 & 4 \\ 
+[ 80, 90) & 1 & NA & NA & 1 & NA & 1 & NA & NA & 1 & 1 & NA & NA \\ 
+[ 90,100] & NA & NA & NA & NA & NA & NA & NA & NA & NA & NA & 1 & NA \\ 
+\midrule 
+Total & 2,412 & 1,233 & 1,548 & 1,568 & 1,710 & 1,448 & 1,608 & 1,644 & 1,377 & 1,569 & 1,539 & 1,622 \\ 
+\midrule
+\multicolumn{1}{l}{Gender} \\ 
+\midrule
+F & 494 & 298 & 362 & 393 & 405 & 360 & 405 & 413 & 368 & 389 & 398 & 417 \\ 
+M & 1918 & 935 & 1186 & 1175 & 1305 & 1088 & 1203 & 1231 & 1009 & 1180 & 1141 & 1205 \\ 
+\midrule 
+Total & 2,412 & 1,233 & 1,548 & 1,568 & 1,710 & 1,448 & 1,608 & 1,644 & 1,377 & 1,569 & 1,539 & 1,622 \\ 
+\midrule
+\multicolumn{1}{l}{MaritalStatus} \\ 
+\midrule
+Divorced & 172 & 104 & 114 & 125 & 120 & 106 & 120 & 142 & 106 & 110 & 125 & 131 \\ 
+Married & 300 & 140 & 173 & 176 & 218 & 172 & 176 & 174 & 172 & 189 & 157 & 176 \\ 
+Separated & 73 & 43 & 55 & 62 & 70 & 59 & 61 & 56 & 50 & 51 & 53 & 54 \\ 
+Single & 1747 & 874 & 1082 & 1083 & 1184 & 1027 & 1159 & 1164 & 974 & 1070 & 1101 & 1144 \\ 
+Widow & 16 & 8 & 9 & 19 & 20 & 11 & 19 & 15 & 7 & 21 & 14 & 13 \\ 
+NA & 104 & 64 & 115 & 103 & 98 & 73 & 73 & 93 & 68 & 128 & 89 & 104 \\ 
+\midrule 
+Total & 2,412 & 1,233 & 1,548 & 1,568 & 1,710 & 1,448 & 1,608 & 1,644 & 1,377 & 1,569 & 1,539 & 1,622 \\ 
+\midrule
+\multicolumn{1}{l}{RaceDescription} \\ 
+\midrule
+Amer Indian/Alaska Native & 2 & 4 & 3 & 2 & 1 & NA & 2 & 1 & 1 & 2 & 4 & 3 \\ 
+Asian or Pacific Islander & 11 & 7 & 5 & 4 & 5 & 4 & 8 & 5 & NA & 6 & 5 & 4 \\ 
+Black-origins of Africa & 1036 & 536 & 684 & 632 & 695 & 564 & 596 & 675 & 551 & 620 & 595 & 670 \\ 
+Hispanic & 57 & 34 & 31 & 36 & 32 & 34 & 39 & 43 & 20 & 35 & 34 & 31 \\ 
+Other & NA & NA & 1 & NA & NA & NA & NA & NA & NA & NA & NA & NA \\ 
+UNKNOWN & NA & 1 & 2 & 1 & 1 & 3 & 2 & 1 & NA & NA & 2 & 1 \\ 
+White/Eurp/ N.Afr/Mid Eas & 1306 & 651 & 822 & 893 & 976 & 843 & 961 & 919 & 805 & 906 & 899 & 913 \\ 
+\midrule 
+Total & 2,412 & 1,233 & 1,548 & 1,568 & 1,710 & 1,448 & 1,608 & 1,644 & 1,377 & 1,569 & 1,539 & 1,622 \\ 
+\bottomrule
+\end{longtable}
+
+
+\end{document}

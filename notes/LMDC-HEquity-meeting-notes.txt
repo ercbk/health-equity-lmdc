@@ -1,0 +1,26 @@
+From Health Equity's Meeting with LMDC
+
+
+
+
+Helpful information we learned:
+
+ 
+
+-A person can be held with multiple charge dispositions (e.g., pretrial vs. sentenced) at any given time and they frequently change.  When analyzing the data they recommend that any charge with a blank charge disposition be considered “pretrial” which is how they analyze the data as well, so it will be comparable to anything of theirs that we use as comparison. 
+
+-As a result they recommend looking at charges either at the time of booking (initial) or at the time of release.  For our purposes right now I think we’re most interested in the initial charges – i.e., can we link it to the idea of over-policing predominantly black or poor neighborhoods?
+
+ 
+
+-The Criminal Justice commission instituted a variety of strategies in FY 19 (the fiscal year ending this June) so would be interested to primarily look at July 2018-March 2019 data set, to reflect what is currently happening.
+
+ 
+
+-We’re waiting on a more detailed data dictionary that might help us better understand some of the charge categories and dispositions.  From what we can tell there isn’t much that would be useful to us in the cell name, and the other demographic and time/date data is pretty straightforward.
+
+ 
+
+-Some useful background reading is the most recent minutes of the Jail Policy Committee (you can get a sense of some of their metrics they use related to the population counts):  https://louisvilleky.gov/sites/default/files/criminal_justice_commission/jail_policy/1-29-19_jail_policy_summary.pdf
+
+ 

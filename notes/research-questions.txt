@@ -1,0 +1,22 @@
+Research Questions
+
+
+
+
+The first 3 research questions are the priority and if you have the ability to dig further into the other ones that would also be helpful.  
+ 
+-Can you provide a concise summary, maybe by moth, of demographic breakdowns, looking at those held in pretrial status only, whether they have felonies or misdemeanors.
+ 
+-How many days on average does a person spend in pretrial-only status before being released? For FY 18 (July 1, 2017 through June 30, 2018) and FY 19 to date (July 1, 2018 to March 31, 2019) how many booking-days were spent in pretrial? (I.e., the cumulative total of days by booking number).  We know it costs about $82 to house one person for one day, and would like to see if we can roughly approximate the amount spent in 2018 to hold pretrial-only people.   How does it differ by race, gender, or age?  What is the split by felony/misdemeanor charges?  
+ 
+-On average how many people in a day are held in pretrial-only status? 
+ 
+-We liked the idea of comparing actual to expected racial demographics that Jake did w/ ggplots.  I’m not sure how to approach this given the fact that we have booking numbers, not unique individuals, but if you all have any ideas this would be something helpful.   
+ 
+-In terms of charge analysis, we’re interested in linking it to the idea of over policing as mentioned above.  We know, for instance that black individuals are more likely to be arrested on petty charges such as drugs and low-level misdemeanors.  Since we don’t really have a good list of charges to look at, one place to start would be looking at the combination of drug charges and other charges-  to see what combinations are common and if they differ by race specifically.  I’m also open to your ideas and suggestions here as you work through the data. 
+ 
+-Another charge area we’re interested in are warrants – we learned a lot of folks will be arrested and then they’ll find the person has an old outstanding warrant (which could be something old and/or easily resolved, like a traffic violation).  We can’t tell much about the type of warrants I don’t think, but similar analysis on who/how many bookings include a warrant would be useful to know.  
+ 
+ 
+Please let me know if you have any data questions that aren’t sufficiently answered and I’ll continue to do my best to get info!
+Angela

@@ -1,0 +1,59 @@
+---
+author: Eric Book
+output:
+      html_document
+---
+
+
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(tidyverse)
+library(lubridate)
+library(gt)
+
+
+
+types <- c("iicTicccccccccT")
+
+
+lmdc <- read_csv(here::here("data", "LMDC_Population_Snapshots.csv"), col_types = types) %>%
+      filter(CurrentAge != 238)
+
+
+lmdc_15_mis <- lmdc %>% 
+      mutate(month = month(SnapshotDateTime, label = TRUE, abbr = FALSE),
+             year = year(SnapshotDateTime),
+             age_group = Hmisc::cut2(lmdc$CurrentAge, cuts = seq(0, 100, 10))) %>% 
+      filter(is.na(ChargeDisposition),
+             year == "2015",
+             ChargeCategory == "MISDEMEANOR") %>%
+      distinct(BookingNumber, BookingDate, .keep_all = TRUE) %>% 
+      select(Gender, RaceDescription, MaritalStatus, age_group, month)
+
+
+
+lmdc_ididit <- lmdc_15_mis %>% 
+      select(month, Gender, RaceDescription, MaritalStatus, age_group) %>% 
+      group_by(month, Gender, RaceDescription, MaritalStatus, age_group) %>% 
+      gather(key = "groupname", value = "rowname", -month) %>% 
+      count(month, groupname, rowname) %>% 
+      spread(month, n)
+
+
+gt(lmdc_ididit) %>% 
+      summary_rows(
+            fns = list(Total = ~sum(., na.rm = TRUE)),
+            formatter = fmt_number,
+            decimals = 0
+      ) %>% 
+      tab_header(
+            title = "Characteristics of pre-trial inmates with misdemeanor charges",
+            subtitle = "2015"
+      )
+
+
+
+```
+
+
