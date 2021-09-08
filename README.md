@@ -10,7 +10,7 @@ Snapshots.](https://data.louisvilleky.gov/dataset/daily-lmdc-population-snapshot
 
 Main Items:
 
--   [Analysis](https://github.com/ercbk/health-equity-lmdc/tree/main/reports/drugs-traffic-associations)
+-   [Analysis](https://raw.githack.com/ercbk/health-equity-lmdc/main/reports/drugs-traffic-associations/drug-traffic-assoc.html)
     of the association of race and drug and traffic charges.  
     + Cramer’s V is used to measure the association between drug charge
     categories and traffic charge categories  
